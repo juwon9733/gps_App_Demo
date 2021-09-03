@@ -97,4 +97,43 @@ public class UserController {
         }
     }
 
+    /**
+     * [4]. 유저 정보 조회
+     * @param userIdx
+     * @return
+     */
+    @ResponseBody
+    @GetMapping("/info")
+    public BaseResponse<User> postLogout(@RequestParam(required = false) Integer userIdx) {
+        try {
+            if (userIdx == null) {
+                return new BaseResponse<>(EMPTY_USER_IDX);
+            }
+            User user = userProvider.getUserByUserIdx(userIdx);
+            return new BaseResponse<>(user);
+        } catch (BaseException exception) {
+            return new BaseResponse<>(exception.getStatus());
+        }
+    }
+
+    @ResponseBody
+    @PatchMapping("/status/{userIdx}")
+    public BaseResponse<PatchUserStatusRes> patchUserStatus(@PathVariable(required = false) Integer userIdx,
+                                                            @RequestBody PatchUserStatusReq patchUserStatusReq) {
+        try {
+            if (userIdx == null) {
+                return new BaseResponse<>(EMPTY_USER_IDX);
+            }
+            if (patchUserStatusReq.getStatus() == null) {
+                return new BaseResponse<>(EMTPY_STATUS);
+            }
+            patchUserStatusReq.setUserIdx(userIdx);
+            userService.patchUserStatus(patchUserStatusReq);
+            PatchUserStatusRes patchUserStatusRes = new PatchUserStatusRes(userIdx);
+            return new BaseResponse<>(patchUserStatusRes);
+        } catch (BaseException exception) {
+            return new BaseResponse<>(exception.getStatus());
+        }
+    }
+
 }

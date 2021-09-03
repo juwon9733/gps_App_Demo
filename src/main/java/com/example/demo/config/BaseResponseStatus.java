@@ -24,6 +24,10 @@ public enum BaseResponseStatus {
     EMPTY_USER_PASSWD(false, 2005, "유저 비밀번호를 입력해주세요"),
 
     EMPTY_USER_IDX(false, 2006, "유저 인덱스를 입력해주세요"),
+    EMPTY_LATITUDE(false, 2007, "위도를 입력해주세요"),
+    EMPTY_LONGITUDE(false, 2008, "경도를 입력해주세요"),
+
+    EMTPY_STATUS(false, 2009, "상태값을 입력해주세요"),
     /**
      *3000 : Response 오류
      */
@@ -33,6 +37,8 @@ public enum BaseResponseStatus {
     DUPLICATED_USER_ID(false, 3001, "중복되는 아이디입니다."),
     USER_ID_NOT_EXIST(false, 3002, "존재하지 않는 아이디입니다."),
     FAILED_TO_LOGIN_BY_PASSWD(false, 3003, "비밀번호가 옳바르지 않습니다."),
+
+    USER_IDX_NOT_EXISTS(false, 3004, "존재하지 않는 유저 인덱스입니다."),
 
     /**
      * 4000 : Database, Server 오류

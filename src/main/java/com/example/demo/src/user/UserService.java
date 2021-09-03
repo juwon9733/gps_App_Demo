@@ -2,6 +2,7 @@ package com.example.demo.src.user;
 
 import com.example.demo.config.BaseException;
 import com.example.demo.config.secret.Secret;
+import com.example.demo.src.user.model.PatchUserStatusReq;
 import com.example.demo.src.user.model.PostLogoutRes;
 import com.example.demo.src.user.model.PostUserSignReq;
 import com.example.demo.src.user.model.PostUserSignRes;
@@ -50,6 +51,13 @@ public class UserService {
         try {
             int deletedJwtIdx = userDao.postLogout(userJwtToken);
             return new PostLogoutRes(deletedJwtIdx, userJwtToken);
+        } catch (Exception exception) {
+            throw new BaseException(DATABASE_ERROR);
+        }
+    }
+    public void patchUserStatus(PatchUserStatusReq patchUserStatusReq) throws BaseException {
+        try {
+            userDao.patchUserStatus(patchUserStatusReq);
         } catch (Exception exception) {
             throw new BaseException(DATABASE_ERROR);
         }

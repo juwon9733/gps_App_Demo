@@ -1,5 +1,6 @@
 package com.example.demo.src.user;
 
+import com.example.demo.src.user.model.PatchUserStatusReq;
 import com.example.demo.src.user.model.PostUserSignReq;
 import com.example.demo.src.user.model.User;
 import lombok.RequiredArgsConstructor;
@@ -12,6 +13,7 @@ import javax.sql.DataSource;
 @RequiredArgsConstructor
 @Repository
 public class UserDao {
+
     @Autowired
     private JdbcTemplate jdbcTemplate;
 
@@ -41,6 +43,7 @@ public class UserDao {
                         rs.getString("status"))
                 , getUserByIdParams);
     }
+
     public int postLogout(String userJwtToken) {
         String postLogoutQuery = "insert into DeletedToken (deletedToken) VALUES (?);";
         Object[] postLogoutParams = new Object[]{userJwtToken};
@@ -48,6 +51,33 @@ public class UserDao {
         String lastInserIdxQuery = "select last_insert_id()";
         return this.jdbcTemplate.queryForObject(lastInserIdxQuery, int.class);
     }
+
+    public User getUserByUserIdx(int userIdx) {
+        String getUsersByUserIdxQuery = "select * from User where Idx = ?";
+        int getUsersByUserIdxParams = userIdx;
+        return this.jdbcTemplate.queryForObject(getUsersByUserIdxQuery,
+                (rs, rowNum) -> new User(
+                        rs.getInt("Idx"),
+                        rs.getString("id"),
+                        rs.getString("passwd"),
+                        rs.getString("status")),
+                getUsersByUserIdxParams);
+    }
+
+    /**
+     * [5]. 유저 비활성화
+     * @param patchUserStatusReq
+     */
+    public void patchUserStatus(PatchUserStatusReq patchUserStatusReq) {
+        String patchUserStatusQuery = "update User\n" +
+                "set status = ?\n" +
+                "where Idx = ?";
+        Object[] patchUserStatusParams = new Object[]{patchUserStatusReq.getStatus(),
+                patchUserStatusReq.getUserIdx()};
+        this.jdbcTemplate.update(patchUserStatusQuery, patchUserStatusParams);
+        String lastInserIdxQuery = "select last_insert_id()";
+    }
+
     /**
      * check 관련 함수 모음
      */
@@ -60,15 +90,25 @@ public class UserDao {
             return false;
         }
     }
+
     public boolean checkDeletedToken(String JwtToken) {
         String checkTokenQuery = "select exists(select Idx from DeletedToken where deletedToken = ?)";
         String checkTokenParams = JwtToken;
-        if(this.jdbcTemplate.queryForObject(checkTokenQuery,
+        if (this.jdbcTemplate.queryForObject(checkTokenQuery,
                 int.class,
                 checkTokenParams) == 1) {
             return true;
+        } else {
+            return false;
         }
-        else {
+    }
+
+    public boolean checkUserIdx(int userIdx) {
+        String checkUserIdxQuery = "select exists(select * from User where Idx = ?)";
+        int checkUserIdxParams = userIdx;
+        if (this.jdbcTemplate.queryForObject(checkUserIdxQuery, int.class, checkUserIdxParams) == 1) {
+            return true;
+        } else {
             return false;
         }
     }

@@ -14,7 +14,6 @@ import org.springframework.stereotype.Service;
 import javax.transaction.Transactional;
 
 import static com.example.demo.config.BaseResponseStatus.*;
-import static com.example.demo.config.BaseResponseStatus.FAILED_TO_LOGIN_BY_PASSWD;
 
 @RequiredArgsConstructor
 @Service
@@ -53,7 +52,17 @@ public class UserProvider {
             throw new BaseException(DATABASE_ERROR);
         }
     }
-
+    public User getUserByUserIdx(int userIdx) throws BaseException {
+        if(checkUserIdx(userIdx) != true){
+            throw new BaseException(USER_IDX_NOT_EXISTS);
+        }
+        try {
+            User user = userDao.getUserByUserIdx(userIdx);
+            return user;
+        } catch (Exception exception) {
+            throw new BaseException(DATABASE_ERROR);
+        }
+    }
     /**
      * check 관련 함수 모음
      */
@@ -67,6 +76,13 @@ public class UserProvider {
     public boolean checkDeletedToken(String JwtToken) throws BaseException {
         try{
             return userDao.checkDeletedToken(JwtToken);
+        } catch (Exception exception){
+            throw new BaseException(DATABASE_ERROR);
+        }
+    }
+    public boolean checkUserIdx(int userIdx) throws BaseException{
+        try{
+            return userDao.checkUserIdx(userIdx);
         } catch (Exception exception){
             throw new BaseException(DATABASE_ERROR);
         }
