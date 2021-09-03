@@ -2,6 +2,8 @@ com/example/demo/src/user/model/PostLoginReq.java
  com.example.demo.src.user.model.PostLoginReq
 com/example/demo/config/Constant.java
  com.example.demo.config.Constant
+com/example/demo/src/user/model/PostLogoutReq.java
+ com.example.demo.src.user.model.PostLogoutReq
 com/example/demo/config/secret/Secret.java
  com.example.demo.config.secret.Secret
 com/example/demo/src/user/UserController.java
@@ -12,6 +14,8 @@ com/example/demo/config/BaseResponse.java
  com.example.demo.config.BaseResponse
 com/example/demo/src/user/model/PostLoginRes.java
  com.example.demo.src.user.model.PostLoginRes
+com/example/demo/src/user/model/PostLogoutRes.java
+ com.example.demo.src.user.model.PostLogoutRes
 com/example/demo/src/user/model/User.java
  com.example.demo.src.user.model.User
 com/example/demo/src/user/UserDao.java

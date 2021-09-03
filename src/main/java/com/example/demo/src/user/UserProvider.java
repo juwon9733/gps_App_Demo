@@ -53,12 +53,20 @@ public class UserProvider {
             throw new BaseException(DATABASE_ERROR);
         }
     }
+
     /**
      * check 관련 함수 모음
      */
     public boolean checkId(String id) throws BaseException {
         try{
             return userDao.checkId(id);
+        } catch (Exception exception){
+            throw new BaseException(DATABASE_ERROR);
+        }
+    }
+    public boolean checkDeletedToken(String JwtToken) throws BaseException {
+        try{
+            return userDao.checkDeletedToken(JwtToken);
         } catch (Exception exception){
             throw new BaseException(DATABASE_ERROR);
         }

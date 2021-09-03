@@ -2,6 +2,7 @@ package com.example.demo.src.user;
 
 import com.example.demo.config.BaseException;
 import com.example.demo.config.secret.Secret;
+import com.example.demo.src.user.model.PostLogoutRes;
 import com.example.demo.src.user.model.PostUserSignReq;
 import com.example.demo.src.user.model.PostUserSignRes;
 import com.example.demo.utils.AES128;
@@ -41,6 +42,14 @@ public class UserService {
             int userIdx = userDao.postUserSign(postUserSignReq);
             String jwt = jwtService.createJwt(userIdx);
             return new PostUserSignRes(userIdx, jwt);
+        } catch (Exception exception) {
+            throw new BaseException(DATABASE_ERROR);
+        }
+    }
+    public PostLogoutRes postLogout(String userJwtToken) throws BaseException {
+        try {
+            int deletedJwtIdx = userDao.postLogout(userJwtToken);
+            return new PostLogoutRes(deletedJwtIdx, userJwtToken);
         } catch (Exception exception) {
             throw new BaseException(DATABASE_ERROR);
         }

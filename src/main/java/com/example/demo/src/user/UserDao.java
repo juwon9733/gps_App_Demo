@@ -41,7 +41,13 @@ public class UserDao {
                         rs.getString("status"))
                 , getUserByIdParams);
     }
-
+    public int postLogout(String userJwtToken) {
+        String postLogoutQuery = "insert into DeletedToken (deletedToken) VALUES (?);";
+        Object[] postLogoutParams = new Object[]{userJwtToken};
+        this.jdbcTemplate.update(postLogoutQuery, postLogoutParams);
+        String lastInserIdxQuery = "select last_insert_id()";
+        return this.jdbcTemplate.queryForObject(lastInserIdxQuery, int.class);
+    }
     /**
      * check 관련 함수 모음
      */
@@ -51,6 +57,18 @@ public class UserDao {
         if (this.jdbcTemplate.queryForObject(checkIdQuery, int.class, checkIdParams) == 1) {
             return true;
         } else {
+            return false;
+        }
+    }
+    public boolean checkDeletedToken(String JwtToken) {
+        String checkTokenQuery = "select exists(select Idx from DeletedToken where deletedToken = ?)";
+        String checkTokenParams = JwtToken;
+        if(this.jdbcTemplate.queryForObject(checkTokenQuery,
+                int.class,
+                checkTokenParams) == 1) {
+            return true;
+        }
+        else {
             return false;
         }
     }

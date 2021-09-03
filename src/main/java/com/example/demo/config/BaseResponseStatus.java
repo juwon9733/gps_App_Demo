@@ -23,6 +23,7 @@ public enum BaseResponseStatus {
     EMPTY_USER_ID(false, 2004, "유저 아이디를 입력해주세요"),
     EMPTY_USER_PASSWD(false, 2005, "유저 비밀번호를 입력해주세요"),
 
+    EMPTY_USER_IDX(false, 2006, "유저 인덱스를 입력해주세요"),
     /**
      *3000 : Response 오류
      */
