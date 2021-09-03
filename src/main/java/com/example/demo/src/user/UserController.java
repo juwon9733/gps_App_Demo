@@ -1,0 +1,73 @@
+package com.example.demo.src.user;
+
+import com.example.demo.config.BaseException;
+import com.example.demo.config.BaseResponse;
+import com.example.demo.src.user.model.PostLoginReq;
+import com.example.demo.src.user.model.PostLoginRes;
+import com.example.demo.src.user.model.PostUserSignReq;
+import com.example.demo.src.user.model.PostUserSignRes;
+import com.example.demo.utils.JwtService;
+import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+import static com.example.demo.config.BaseResponseStatus.*;
+
+
+@RequiredArgsConstructor
+@RestController
+@RequestMapping("/users")
+public class UserController {
+
+    @Autowired
+    private final UserProvider userProvider;
+    @Autowired
+    private final UserService userService;
+    @Autowired
+    private final JwtService jwtService;
+
+    /**
+     * [1]. 유저 회원 가입
+     * @param postUserSignReq
+     * @return
+     */
+    @ResponseBody
+    @PostMapping("/sign-in")
+    public BaseResponse<PostUserSignRes> postUserSign(@RequestBody PostUserSignReq postUserSignReq) {
+        try {
+            if(postUserSignReq.getId() == null) {
+                return new BaseResponse<>(EMPTY_USER_ID);
+            }
+            if(postUserSignReq.getPasswd() == null) {
+                return new BaseResponse<>(EMPTY_USER_PASSWD);
+            }
+            PostUserSignRes postUserSignRes = userService.postUserSign(postUserSignReq);
+            return new BaseResponse<>(postUserSignRes);
+        } catch (BaseException exception) {
+            return new BaseResponse<>((exception.getStatus()));
+        }
+    }
+
+    /**
+     * [2]. 유저 로그인
+     * @param postLoginReq
+     * @return
+     */
+    @ResponseBody
+    @PostMapping("/login")
+    public BaseResponse<PostLoginRes> postLogin(@RequestBody PostLoginReq postLoginReq) {
+        try {
+            if(postLoginReq.getId() == null) {
+                return new BaseResponse<>(EMPTY_USER_ID);
+            }
+            if(postLoginReq.getPasswd() == null) {
+                return new BaseResponse<>(EMPTY_USER_PASSWD);
+            }
+            PostLoginRes postLoginRes = userProvider.postLogin(postLoginReq);
+            return new BaseResponse<>(postLoginRes);
+        } catch (BaseException exception) {
+            return new BaseResponse<>(exception.getStatus());
+        }
+    }
+
+}
