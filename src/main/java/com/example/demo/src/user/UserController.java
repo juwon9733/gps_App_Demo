@@ -15,6 +15,7 @@ import static com.example.demo.config.BaseResponseStatus.EMPTY_USER_IDX;
 @RequiredArgsConstructor
 @RestController
 @RequestMapping("/users")
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 public class UserController {
 
     @Autowired
