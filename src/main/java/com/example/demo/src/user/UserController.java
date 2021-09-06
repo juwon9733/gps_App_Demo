@@ -83,6 +83,9 @@ public class UserController {
             if(userProvider.checkDeletedToken(jwtService.getJwt()) == true) {
                 return new BaseResponse<>(DELETED_TOKEN);
             }
+            /**
+             * jwtService 관련
+             */
             int userIdxByJwt = jwtService.getUserIdx();
             if (postLogoutReq.getUserIdx() != userIdxByJwt) {
                 return new BaseResponse<>(INVALID_USER_JWT);
@@ -116,6 +119,12 @@ public class UserController {
         }
     }
 
+    /**
+     * [5]. 유저 활성화 및 비활성화
+     * @param userIdx
+     * @param patchUserStatusReq
+     * @return
+     */
     @ResponseBody
     @PatchMapping("/status/{userIdx}")
     public BaseResponse<PatchUserStatusRes> patchUserStatus(@PathVariable(required = false) Integer userIdx,

@@ -1,7 +1,9 @@
 package com.example.demo.src.location;
 
 import com.example.demo.src.location.model.GetLocationRes;
+import com.example.demo.src.location.model.PatchUserLocationReq;
 import com.example.demo.src.location.model.PostLocationReq;
+import com.example.demo.src.user.model.PatchUserStatusReq;
 import com.example.demo.src.user.model.PostUserSignReq;
 import com.example.demo.src.user.model.User;
 import lombok.RequiredArgsConstructor;
@@ -37,7 +39,7 @@ public class LocationDao {
         String getLocationQuery = "select Idx, userIdx, latitude, longitude," +
                 " createdAt, updatedAt, status\n" +
                 "from Location\n" +
-                "where userIdx = ?\n";
+                "where userIdx = ? and status = 'Y'";
         int getLocationParams = userIdx;
         return this.jdbcTemplate.query(getLocationQuery,
                 (rs, rowNum) -> new GetLocationRes(
@@ -49,5 +51,14 @@ public class LocationDao {
                         rs.getString("updatedAt"),
                         rs.getString("status")),
                 getLocationParams);
+    }
+    public void patchUserLocationStatus(PatchUserLocationReq patchUserLocationReq) {
+        String patchUserLocationStatusQuery = "update Location\n" +
+                "set status = ?\n" +
+                "where userIdx = ?";
+        Object[] patchUserLocationStatusParams = new Object[]{patchUserLocationReq.getStatus(),
+                patchUserLocationReq.getUserIdx()};
+        this.jdbcTemplate.update(patchUserLocationStatusQuery, patchUserLocationStatusParams);
+        String lastInserIdxQuery = "select last_insert_id()";
     }
 }

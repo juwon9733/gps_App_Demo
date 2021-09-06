@@ -24,6 +24,8 @@ com/example/demo/config/BaseResponseStatus.java
  com.example.demo.config.BaseResponseStatus
 com/example/demo/src/user/model/PostUserSignReq.java
  com.example.demo.src.user.model.PostUserSignReq
+com/example/demo/src/location/model/PatchUserLocationRes.java
+ com.example.demo.src.location.model.PatchUserLocationRes
 com/example/demo/src/location/model/PostLocationReq.java
  com.example.demo.src.location.model.PostLocationReq
 com/example/demo/src/WebSecurityConfig.java
@@ -62,3 +64,5 @@ com/example/demo/src/user/UserProvider.java
  com.example.demo.src.user.UserProvider
 com/example/demo/src/user/model/PostUserSignRes.java
  com.example.demo.src.user.model.PostUserSignRes
+com/example/demo/src/location/model/PatchUserLocationReq.java
+ com.example.demo.src.location.model.PatchUserLocationReq

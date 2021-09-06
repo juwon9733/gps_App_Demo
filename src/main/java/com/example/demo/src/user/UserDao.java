@@ -64,10 +64,6 @@ public class UserDao {
                 getUsersByUserIdxParams);
     }
 
-    /**
-     * [5]. 유저 비활성화
-     * @param patchUserStatusReq
-     */
     public void patchUserStatus(PatchUserStatusReq patchUserStatusReq) {
         String patchUserStatusQuery = "update User\n" +
                 "set status = ?\n" +

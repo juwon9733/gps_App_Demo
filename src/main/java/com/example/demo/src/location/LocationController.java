@@ -3,7 +3,6 @@ package com.example.demo.src.location;
 import com.example.demo.config.BaseException;
 import com.example.demo.config.BaseResponse;
 import com.example.demo.src.location.model.*;
-import com.example.demo.src.user.model.User;
 import com.example.demo.utils.JwtService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -64,6 +63,26 @@ public class LocationController {
             }
             List<GetLocationRes> getLocationRes = locationProvider.getLocation(userIdx);
             return new BaseResponse<>(getLocationRes);
+        } catch (BaseException exception) {
+            return new BaseResponse<>(exception.getStatus());
+        }
+    }
+
+    @ResponseBody
+    @PatchMapping("/status/{userIdx}")
+    public BaseResponse<PatchUserLocationRes> patchUserLocationStatus(@PathVariable(required = false) Integer userIdx,
+                                                            @RequestBody PatchUserLocationReq patchUserLocationReq) {
+        try {
+            if (userIdx == null) {
+                return new BaseResponse<>(EMPTY_USER_IDX);
+            }
+            if (patchUserLocationReq.getStatus() == null) {
+                return new BaseResponse<>(EMTPY_STATUS);
+            }
+            patchUserLocationReq.setUserIdx(userIdx);
+            locationService.patchUserLocationStatus(patchUserLocationReq);
+            PatchUserLocationRes patchUserLocationRes = new PatchUserLocationRes(userIdx);
+            return new BaseResponse<>(patchUserLocationRes);
         } catch (BaseException exception) {
             return new BaseResponse<>(exception.getStatus());
         }
