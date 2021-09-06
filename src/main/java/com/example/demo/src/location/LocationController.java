@@ -18,9 +18,9 @@ import static com.example.demo.config.BaseResponseStatus.*;
 public class LocationController {
 
     @Autowired
-    private final LocationProvider locationProvider;
-    @Autowired
     private final LocationService locationService;
+    @Autowired
+    private final LocationProvider locationProvider;
     @Autowired
     private final JwtService jwtService;
 
@@ -68,6 +68,12 @@ public class LocationController {
         }
     }
 
+    /**
+     * [8]. 특정 유저에 대한 좌표 기록 활성화 및 비활성화
+     * @param userIdx
+     * @param patchUserLocationReq
+     * @return
+     */
     @ResponseBody
     @PatchMapping("/status/{userIdx}")
     public BaseResponse<PatchUserLocationRes> patchUserLocationStatus(@PathVariable(required = false) Integer userIdx,

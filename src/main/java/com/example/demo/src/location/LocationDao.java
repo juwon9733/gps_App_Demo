@@ -1,11 +1,6 @@
 package com.example.demo.src.location;
 
-import com.example.demo.src.location.model.GetLocationRes;
-import com.example.demo.src.location.model.PatchUserLocationReq;
-import com.example.demo.src.location.model.PostLocationReq;
-import com.example.demo.src.user.model.PatchUserStatusReq;
-import com.example.demo.src.user.model.PostUserSignReq;
-import com.example.demo.src.user.model.User;
+import com.example.demo.src.location.model.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -19,7 +14,6 @@ import java.util.List;
 public class LocationDao {
     @Autowired
     private JdbcTemplate jdbcTemplate;
-
     @Autowired
     public void setDataSource(DataSource dataSource) {
         this.jdbcTemplate = new JdbcTemplate(dataSource);

@@ -30,16 +30,24 @@ com/example/demo/src/location/model/PostLocationReq.java
  com.example.demo.src.location.model.PostLocationReq
 com/example/demo/src/WebSecurityConfig.java
  com.example.demo.src.WebSecurityConfig
+com/example/demo/src/restrict/RestrictService.java
+ com.example.demo.src.restrict.RestrictService
+com/example/demo/src/restrict/RestrictDao.java
+ com.example.demo.src.restrict.RestrictDao
 com/example/demo/src/test/TestController.java
  com.example.demo.src.test.TestController
 com/example/demo/src/location/LocationDao.java
  com.example.demo.src.location.LocationDao
 com/example/demo/src/user/model/PostLoginReq.java
  com.example.demo.src.user.model.PostLoginReq
+com/example/demo/src/restrict/RestrictProvider.java
+ com.example.demo.src.restrict.RestrictProvider
 com/example/demo/src/user/model/PostLogoutReq.java
  com.example.demo.src.user.model.PostLogoutReq
 com/example/demo/config/secret/Secret.java
  com.example.demo.config.secret.Secret
+com/example/demo/src/restrict/RestrictController.java
+ com.example.demo.src.restrict.RestrictController
 com/example/demo/src/user/UserController.java
  com.example.demo.src.user.UserController
 com/example/demo/config/BaseResponse.java
