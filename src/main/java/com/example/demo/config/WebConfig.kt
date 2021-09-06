@@ -12,12 +12,6 @@ open class WebConfig : WebMvcConfigurer {
         registry
                 .addMapping("/**")
                 .allowedOrigins("*")
-                .allowedMethods(
-                        HttpMethod.GET.name,
-                        HttpMethod.POST.name,
-                        HttpMethod.PATCH.name,
-                        HttpMethod.DELETE.name,
-                )
-
+                .allowedMethods("*")
     }
 }
