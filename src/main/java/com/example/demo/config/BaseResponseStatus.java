@@ -30,6 +30,8 @@ public enum BaseResponseStatus {
     EMPTY_LOCATION_IDX(false, 2011, "위치 인덱스를 입력해주세요"),
     EMPTY_STATUS(false, 2009, "상태값을 입력해주세요"),
     EMPTY_RADIUS(false, 2010, "반지름을 입력해주세요"),
+
+    EMPTY_RESTRICT_IDX(false, 2011, "제한 구역 인덱스를 입력해주세요"),
     /**
      *3000 : Response 오류
      */

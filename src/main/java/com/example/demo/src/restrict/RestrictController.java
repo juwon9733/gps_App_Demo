@@ -71,5 +71,24 @@ public class RestrictController {
         }
     }
 
+    @ResponseBody
+    @PatchMapping("/status")
+    public BaseResponse<PatchRestrictStatusRes> patchRestrictStatus(
+            @RequestBody PatchRestrictStatusReq patchRestrictStatusReq) {
+        try {
+            if (patchRestrictStatusReq.getRestrictIdx() == null) {
+                return new BaseResponse<>(EMPTY_RESTRICT_IDX);
+            }
+            if (patchRestrictStatusReq.getStatus() == null) {
+                return new BaseResponse<>(EMPTY_STATUS);
+            }
+            restrictService.patchRestrictStatus(patchRestrictStatusReq);
+            PatchRestrictStatusRes patchRestrictStatusRes =
+                    new PatchRestrictStatusRes(patchRestrictStatusReq.getRestrictIdx());
+            return new BaseResponse<>(patchRestrictStatusRes);
+        } catch (BaseException exception) {
+            return new BaseResponse<>(exception.getStatus());
+        }
+    }
 
 }

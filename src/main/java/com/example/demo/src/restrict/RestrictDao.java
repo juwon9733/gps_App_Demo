@@ -1,8 +1,10 @@
 package com.example.demo.src.restrict;
 
 import com.example.demo.src.location.model.GetLocationRes;
+import com.example.demo.src.location.model.PatchUserLocationReq;
 import com.example.demo.src.location.model.PostLocationReq;
 import com.example.demo.src.restrict.model.GetRestrictRes;
+import com.example.demo.src.restrict.model.PatchRestrictStatusReq;
 import com.example.demo.src.restrict.model.PostRestrictReq;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -50,5 +52,14 @@ public class RestrictDao {
                         rs.getString("updatedAt"),
                         rs.getString("status")),
                 getRestrictParams);
+    }
+    public void patchRestrictStatus(PatchRestrictStatusReq patchRestrictStatusReq) {
+        String patchRestrictStatusQuery = "update Restricted\n" +
+                "set status = ?\n" +
+                "where Idx = ?";
+        Object[] patchRestrictStatusParams = new Object[]{patchRestrictStatusReq.getStatus(),
+                patchRestrictStatusReq.getRestrictIdx()};
+        this.jdbcTemplate.update(patchRestrictStatusQuery, patchRestrictStatusParams);
+        String lastInserIdxQuery = "select last_insert_id()";
     }
 }

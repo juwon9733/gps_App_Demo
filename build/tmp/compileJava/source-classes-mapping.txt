@@ -8,6 +8,8 @@ com/example/demo/src/user/model/PatchUserStatusRes.java
  com.example.demo.src.user.model.PatchUserStatusRes
 com/example/demo/src/location/LocationController.java
  com.example.demo.src.location.LocationController
+com/example/demo/src/restrict/model/PatchRestrictStatusRes.java
+ com.example.demo.src.restrict.model.PatchRestrictStatusRes
 com/example/demo/src/location/LocationProvider.java
  com.example.demo.src.location.LocationProvider
 com/example/demo/utils/ValidationRegex.java
@@ -42,6 +44,8 @@ com/example/demo/src/restrict/RestrictDao.java
  com.example.demo.src.restrict.RestrictDao
 com/example/demo/src/test/TestController.java
  com.example.demo.src.test.TestController
+com/example/demo/src/restrict/model/PatchRestrictStatusReq.java
+ com.example.demo.src.restrict.model.PatchRestrictStatusReq
 com/example/demo/src/location/LocationDao.java
  com.example.demo.src.location.LocationDao
 com/example/demo/src/user/model/PostLoginReq.java

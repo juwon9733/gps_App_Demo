@@ -1,6 +1,7 @@
 package com.example.demo.src.restrict;
 
 import com.example.demo.config.BaseException;
+import com.example.demo.src.location.model.PatchUserLocationReq;
 import com.example.demo.src.restrict.model.*;
 import com.example.demo.utils.JwtService;
 import lombok.RequiredArgsConstructor;
@@ -27,6 +28,13 @@ public class RestrictService {
         try {
             int restrictIdx = restrictDao.postRestrict(PostRestrictReq);
             return new PostRestrictRes(restrictIdx);
+        } catch (Exception exception) {
+            throw new BaseException(DATABASE_ERROR);
+        }
+    }
+    public void patchRestrictStatus(PatchRestrictStatusReq patchRestrictStatusReq) throws BaseException {
+        try {
+            restrictDao.patchRestrictStatus(patchRestrictStatusReq);
         } catch (Exception exception) {
             throw new BaseException(DATABASE_ERROR);
         }
