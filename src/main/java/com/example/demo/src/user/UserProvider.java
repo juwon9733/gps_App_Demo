@@ -2,9 +2,7 @@ package com.example.demo.src.user;
 
 import com.example.demo.config.BaseException;
 import com.example.demo.config.secret.Secret;
-import com.example.demo.src.user.model.PostLoginReq;
-import com.example.demo.src.user.model.PostLoginRes;
-import com.example.demo.src.user.model.User;
+import com.example.demo.src.user.model.*;
 import com.example.demo.utils.AES128;
 import com.example.demo.utils.JwtService;
 import lombok.RequiredArgsConstructor;
@@ -12,6 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+
+import java.util.List;
 
 import static com.example.demo.config.BaseResponseStatus.*;
 
@@ -59,6 +59,14 @@ public class UserProvider {
         try {
             User user = userDao.getUserByUserIdx(userIdx);
             return user;
+        } catch (Exception exception) {
+            throw new BaseException(DATABASE_ERROR);
+        }
+    }
+    public List<User> getUserId() throws BaseException {
+        try {
+            List<User> users = userDao.getUserId();
+            return users;
         } catch (Exception exception) {
             throw new BaseException(DATABASE_ERROR);
         }

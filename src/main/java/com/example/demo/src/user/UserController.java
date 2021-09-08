@@ -8,6 +8,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 import static com.example.demo.config.BaseResponseStatus.*;
 import static com.example.demo.config.BaseResponseStatus.EMPTY_USER_IDX;
 
@@ -145,5 +147,21 @@ public class UserController {
             return new BaseResponse<>(exception.getStatus());
         }
     }
+
+    /**
+     * [5_1]. 모든 유저 아이디 조회
+     * @return
+     */
+    @ResponseBody
+    @GetMapping("/id")
+    public BaseResponse<List<User>> getUserId() {
+        try {
+            List<User> users = userProvider.getUserId();
+            return new BaseResponse<>(users);
+        } catch (BaseException exception) {
+            return new BaseResponse<>(exception.getStatus());
+        }
+    }
+
 
 }

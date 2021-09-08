@@ -9,6 +9,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 import javax.sql.DataSource;
+import java.util.List;
 
 @RequiredArgsConstructor
 @Repository
@@ -72,6 +73,20 @@ public class UserDao {
                 patchUserStatusReq.getUserIdx()};
         this.jdbcTemplate.update(patchUserStatusQuery, patchUserStatusParams);
         String lastInserIdxQuery = "select last_insert_id()";
+    }
+
+    public List<User> getUserId() {
+        String getUserIdQuery = "select *\n" +
+                "from User\n" +
+                "where status = 'Y';";
+        int getUserIdParams;
+        return this.jdbcTemplate.query(getUserIdQuery,
+                (rs, rowNum) -> new User(
+                        rs.getInt("Idx"),
+                        rs.getString("id"),
+                        rs.getString("passwd"),
+                        rs.getString("status"))
+        );
     }
 
     /**
