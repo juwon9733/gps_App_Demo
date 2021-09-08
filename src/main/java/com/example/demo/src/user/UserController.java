@@ -127,7 +127,7 @@ public class UserController {
      * @return
      */
     @ResponseBody
-    @PostMapping("/status")
+    @PatchMapping("/status")
     public BaseResponse<PatchUserStatusRes> patchUserStatus(@RequestBody(required = false) PatchUserStatusReq patchUserStatusReq) {
         try {
             if (patchUserStatusReq.getUserIdx() == null) {
