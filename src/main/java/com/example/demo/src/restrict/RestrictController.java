@@ -52,6 +52,11 @@ public class RestrictController {
         }
     }
 
+    /**
+     * [10]. 특정 유저에 대한 제한 구역 조회
+     * @param userIdx
+     * @return
+     */
     @ResponseBody
     @GetMapping("")
     public BaseResponse<List<GetRestrictRes>> getRestrict(@RequestParam Integer userIdx) {
@@ -65,6 +70,4 @@ public class RestrictController {
             return new BaseResponse<>((exception.getStatus()));
         }
     }
-
-
 }

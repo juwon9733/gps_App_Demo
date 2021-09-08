@@ -49,9 +49,9 @@ public class LocationDao {
     public void patchUserLocationStatus(PatchUserLocationReq patchUserLocationReq) {
         String patchUserLocationStatusQuery = "update Location\n" +
                 "set status = ?\n" +
-                "where userIdx = ?";
+                "where Idx = ?";
         Object[] patchUserLocationStatusParams = new Object[]{patchUserLocationReq.getStatus(),
-                patchUserLocationReq.getUserIdx()};
+                patchUserLocationReq.getLocationIdx()};
         this.jdbcTemplate.update(patchUserLocationStatusQuery, patchUserLocationStatusParams);
         String lastInserIdxQuery = "select last_insert_id()";
     }

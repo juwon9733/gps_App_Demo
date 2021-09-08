@@ -8,6 +8,6 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 public class PatchUserLocationReq {
-    private int userIdx;
+    private int locationIdx;
     private String status;
 }

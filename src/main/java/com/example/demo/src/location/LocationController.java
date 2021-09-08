@@ -69,25 +69,25 @@ public class LocationController {
     }
 
     /**
-     * [8]. 특정 유저에 대한 좌표 기록 활성화 및 비활성화
-     * @param userIdx
+     * [8]. 특정 좌표 기록 활성화 및 비활성화
+     * @param locationIdx
      * @param patchUserLocationReq
      * @return
      */
     @ResponseBody
-    @PatchMapping("/status/{userIdx}")
-    public BaseResponse<PatchUserLocationRes> patchUserLocationStatus(@PathVariable(required = false) Integer userIdx,
+    @PatchMapping("/status/{locationIdx}")
+    public BaseResponse<PatchUserLocationRes> patchUserLocationStatus(@PathVariable(required = false) Integer locationIdx,
                                                             @RequestBody PatchUserLocationReq patchUserLocationReq) {
         try {
-            if (userIdx == null) {
+            if (locationIdx == null) {
                 return new BaseResponse<>(EMPTY_USER_IDX);
             }
             if (patchUserLocationReq.getStatus() == null) {
                 return new BaseResponse<>(EMPTY_STATUS);
             }
-            patchUserLocationReq.setUserIdx(userIdx);
+            patchUserLocationReq.setLocationIdx(locationIdx);
             locationService.patchUserLocationStatus(patchUserLocationReq);
-            PatchUserLocationRes patchUserLocationRes = new PatchUserLocationRes(userIdx);
+            PatchUserLocationRes patchUserLocationRes = new PatchUserLocationRes(locationIdx);
             return new BaseResponse<>(patchUserLocationRes);
         } catch (BaseException exception) {
             return new BaseResponse<>(exception.getStatus());
