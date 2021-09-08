@@ -121,27 +121,23 @@ public class UserController {
             return new BaseResponse<>(exception.getStatus());
         }
     }
-
     /**
      * [5]. 유저 활성화 및 비활성화
-     * @param userIdx
      * @param patchUserStatusReq
      * @return
      */
     @ResponseBody
-    @PatchMapping("/status")
-    public BaseResponse<PatchUserStatusRes> patchUserStatus(@RequestParam(required = false) Integer userIdx,
-                                                            @RequestBody PatchUserStatusReq patchUserStatusReq) {
+    @PostMapping("/status")
+    public BaseResponse<PatchUserStatusRes> patchUserStatus(@RequestBody(required = false) PatchUserStatusReq patchUserStatusReq) {
         try {
-            if (userIdx == null) {
+            if (patchUserStatusReq.getUserIdx() == null) {
                 return new BaseResponse<>(EMPTY_USER_IDX);
             }
             if (patchUserStatusReq.getStatus() == null) {
                 return new BaseResponse<>(EMPTY_STATUS);
             }
-            patchUserStatusReq.setUserIdx(userIdx);
             userService.patchUserStatus(patchUserStatusReq);
-            PatchUserStatusRes patchUserStatusRes = new PatchUserStatusRes(userIdx);
+            PatchUserStatusRes patchUserStatusRes = new PatchUserStatusRes(patchUserStatusReq.getUserIdx());
             return new BaseResponse<>(patchUserStatusRes);
         } catch (BaseException exception) {
             return new BaseResponse<>(exception.getStatus());
