@@ -50,8 +50,8 @@ com/example/demo/config/secret/Secret.java
  com.example.demo.config.secret.Secret
 com/example/demo/src/restrict/RestrictController.java
  com.example.demo.src.restrict.RestrictController
-com/example/demo/src/location/model/PatchUserLocationReq.java
- com.example.demo.src.location.model.PatchUserLocationReq
+com/example/demo/src/user/UserController.java
+ com.example.demo.src.user.UserController
 com/example/demo/config/BaseResponse.java
  com.example.demo.config.BaseResponse
 com/example/demo/src/user/model/User.java
@@ -74,5 +74,5 @@ com/example/demo/src/user/UserProvider.java
  com.example.demo.src.user.UserProvider
 com/example/demo/src/user/model/PostUserSignRes.java
  com.example.demo.src.user.model.PostUserSignRes
-com/example/demo/src/user/UserController.java
- com.example.demo.src.user.UserController
+com/example/demo/src/location/model/PatchUserLocationReq.java
+ com.example.demo.src.location.model.PatchUserLocationReq
