@@ -8,6 +8,7 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 public class GetRestrictRes {
+    int restrictIdx;
     int userIdx;
     String latitude;
     String longitude;

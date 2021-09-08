@@ -74,7 +74,7 @@ public class LocationController {
      * @return
      */
     @ResponseBody
-    @PostMapping("/status")
+    @PatchMapping("/status")
     public BaseResponse<PatchUserLocationRes> patchUserLocationStatus(@RequestBody PatchUserLocationReq patchUserLocationReq) {
         try {
             if (patchUserLocationReq.getLocationIdx() == null) {

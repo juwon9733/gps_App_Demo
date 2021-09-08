@@ -35,12 +35,13 @@ public class RestrictDao {
     }
 
     public List<GetRestrictRes> getRestrict(int userIdx) {
-        String getRestrictQuery = "select userIdx, latitude, longitude, radius, createdAt, updatedAt, status\n" +
+        String getRestrictQuery = "select Idx, userIdx, latitude, longitude, radius, createdAt, updatedAt, status\n" +
                 "from Restricted\n" +
                 "where userIdx = ? and status = 'Y';";
         int getRestrictParams = userIdx;
         return this.jdbcTemplate.query(getRestrictQuery,
                 (rs, rowNum) -> new GetRestrictRes(
+                        rs.getInt("Idx"),
                         rs.getInt("userIdx"),
                         rs.getString("latitude"),
                         rs.getString("longitude"),
