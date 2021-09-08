@@ -71,6 +71,7 @@ public class UserProvider {
             throw new BaseException(DATABASE_ERROR);
         }
     }
+
     /**
      * check 관련 함수 모음
      */

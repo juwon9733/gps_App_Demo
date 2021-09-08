@@ -147,7 +147,6 @@ public class UserController {
             return new BaseResponse<>(exception.getStatus());
         }
     }
-
     /**
      * [5_1]. 모든 유저 아이디 조회
      * @return
@@ -162,6 +161,22 @@ public class UserController {
             return new BaseResponse<>(exception.getStatus());
         }
     }
+
+    @ResponseBody
+    @GetMapping("/userIdx")
+    public BaseResponse<GetUserIdxByJwtRes> getUserIdxByJwt() {
+        try {
+            int userIdxByJwt = jwtService.getUserIdx();
+
+            System.out.println("userIdx is : " + userIdxByJwt);
+            GetUserIdxByJwtRes getUserIdxByJwtRes = new GetUserIdxByJwtRes(userIdxByJwt);
+
+            return new BaseResponse<>(getUserIdxByJwtRes);
+        } catch (BaseException exception) {
+            return new BaseResponse<>(exception.getStatus());
+        }
+    }
+
 
 
 }

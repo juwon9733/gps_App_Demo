@@ -22,6 +22,8 @@ com/example/demo/utils/AES128.java
  com.example.demo.utils.AES128
 com/example/demo/config/BaseResponseStatus.java
  com.example.demo.config.BaseResponseStatus
+com/example/demo/src/user/model/GetUserIdxByJwtRes.java
+ com.example.demo.src.user.model.GetUserIdxByJwtRes
 com/example/demo/src/user/model/PostUserSignReq.java
  com.example.demo.src.user.model.PostUserSignReq
 com/example/demo/src/location/model/PatchUserLocationRes.java
@@ -48,8 +50,8 @@ com/example/demo/config/secret/Secret.java
  com.example.demo.config.secret.Secret
 com/example/demo/src/restrict/RestrictController.java
  com.example.demo.src.restrict.RestrictController
-com/example/demo/src/user/UserController.java
- com.example.demo.src.user.UserController
+com/example/demo/src/location/model/PatchUserLocationReq.java
+ com.example.demo.src.location.model.PatchUserLocationReq
 com/example/demo/config/BaseResponse.java
  com.example.demo.config.BaseResponse
 com/example/demo/src/user/model/User.java
@@ -72,5 +74,5 @@ com/example/demo/src/user/UserProvider.java
  com.example.demo.src.user.UserProvider
 com/example/demo/src/user/model/PostUserSignRes.java
  com.example.demo.src.user.model.PostUserSignRes
-com/example/demo/src/location/model/PatchUserLocationReq.java
- com.example.demo.src.location.model.PatchUserLocationReq
+com/example/demo/src/user/UserController.java
+ com.example.demo.src.user.UserController
