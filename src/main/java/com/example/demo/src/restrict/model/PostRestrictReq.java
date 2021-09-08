@@ -11,5 +11,5 @@ public class PostRestrictReq {
     Integer userIdx;
     String latitude;
     String longitude;
-    Integer radius;
+    String radius;
 }

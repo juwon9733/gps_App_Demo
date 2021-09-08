@@ -8,6 +8,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 import static com.example.demo.config.BaseResponseStatus.*;
 
 @RequiredArgsConstructor
@@ -22,6 +24,11 @@ public class RestrictController {
     @Autowired
     private final JwtService jwtService;
 
+    /**
+     * [9]. 특정 유저에 대한 제한 구역 생성
+     * @param postRestrictReq
+     * @return
+     */
     @ResponseBody
     @PostMapping("")
     public BaseResponse<PostRestrictRes> postRestrict(@RequestBody PostRestrictReq postRestrictReq) {
@@ -40,6 +47,20 @@ public class RestrictController {
             }
             PostRestrictRes postRestrictRes = restrictService.postRestrict(postRestrictReq);
             return new BaseResponse<>(postRestrictRes);
+        } catch (BaseException exception) {
+            return new BaseResponse<>((exception.getStatus()));
+        }
+    }
+
+    @ResponseBody
+    @GetMapping("")
+    public BaseResponse<List<GetRestrictRes>> getRestrict(@RequestParam Integer userIdx) {
+        try {
+            if(userIdx == null) {
+                return new BaseResponse<>(EMPTY_USER_IDX);
+            }
+            List<GetRestrictRes> getRestrictRes = restrictProvider.getRestrict(userIdx);
+            return new BaseResponse<>(getRestrictRes);
         } catch (BaseException exception) {
             return new BaseResponse<>((exception.getStatus()));
         }

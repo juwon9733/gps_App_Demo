@@ -24,6 +24,8 @@ com/example/demo/config/BaseResponseStatus.java
  com.example.demo.config.BaseResponseStatus
 com/example/demo/src/user/model/GetUserIdxByJwtRes.java
  com.example.demo.src.user.model.GetUserIdxByJwtRes
+com/example/demo/src/restrict/model/GetRestrictRes.java
+ com.example.demo.src.restrict.model.GetRestrictRes
 com/example/demo/src/restrict/model/PostRestrictRes.java
  com.example.demo.src.restrict.model.PostRestrictRes
 com/example/demo/src/user/model/PostUserSignReq.java
