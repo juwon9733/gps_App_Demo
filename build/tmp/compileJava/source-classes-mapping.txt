@@ -24,6 +24,8 @@ com/example/demo/config/BaseResponseStatus.java
  com.example.demo.config.BaseResponseStatus
 com/example/demo/src/user/model/GetUserIdxByJwtRes.java
  com.example.demo.src.user.model.GetUserIdxByJwtRes
+com/example/demo/src/restrict/model/PostRestrictRes.java
+ com.example.demo.src.restrict.model.PostRestrictRes
 com/example/demo/src/user/model/PostUserSignReq.java
  com.example.demo.src.user.model.PostUserSignReq
 com/example/demo/src/location/model/PatchUserLocationRes.java
@@ -54,6 +56,8 @@ com/example/demo/src/user/UserController.java
  com.example.demo.src.user.UserController
 com/example/demo/config/BaseResponse.java
  com.example.demo.config.BaseResponse
+com/example/demo/src/restrict/model/PostRestrictReq.java
+ com.example.demo.src.restrict.model.PostRestrictReq
 com/example/demo/src/user/model/User.java
  com.example.demo.src.user.model.User
 com/example/demo/src/user/model/PatchUserStatusReq.java

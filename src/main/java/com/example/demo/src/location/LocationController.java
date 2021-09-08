@@ -83,7 +83,7 @@ public class LocationController {
                 return new BaseResponse<>(EMPTY_USER_IDX);
             }
             if (patchUserLocationReq.getStatus() == null) {
-                return new BaseResponse<>(EMTPY_STATUS);
+                return new BaseResponse<>(EMPTY_STATUS);
             }
             patchUserLocationReq.setUserIdx(userIdx);
             locationService.patchUserLocationStatus(patchUserLocationReq);

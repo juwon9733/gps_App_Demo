@@ -137,7 +137,7 @@ public class UserController {
                 return new BaseResponse<>(EMPTY_USER_IDX);
             }
             if (patchUserStatusReq.getStatus() == null) {
-                return new BaseResponse<>(EMTPY_STATUS);
+                return new BaseResponse<>(EMPTY_STATUS);
             }
             patchUserStatusReq.setUserIdx(userIdx);
             userService.patchUserStatus(patchUserStatusReq);
@@ -162,13 +162,16 @@ public class UserController {
         }
     }
 
+    /**
+     * [5_2]. jwt값으로 유저 인덱스 조회
+     * @return
+     */
     @ResponseBody
     @GetMapping("/userIdx")
     public BaseResponse<GetUserIdxByJwtRes> getUserIdxByJwt() {
         try {
             int userIdxByJwt = jwtService.getUserIdx();
 
-            System.out.println("userIdx is : " + userIdxByJwt);
             GetUserIdxByJwtRes getUserIdxByJwtRes = new GetUserIdxByJwtRes(userIdxByJwt);
 
             return new BaseResponse<>(getUserIdxByJwtRes);
