@@ -75,12 +75,12 @@ public class LocationController {
      * @return
      */
     @ResponseBody
-    @PatchMapping("/status/{locationIdx}")
-    public BaseResponse<PatchUserLocationRes> patchUserLocationStatus(@PathVariable(required = false) Integer locationIdx,
+    @PatchMapping("/status")
+    public BaseResponse<PatchUserLocationRes> patchUserLocationStatus(@RequestParam(required = false) Integer locationIdx,
                                                             @RequestBody PatchUserLocationReq patchUserLocationReq) {
         try {
             if (locationIdx == null) {
-                return new BaseResponse<>(EMPTY_USER_IDX);
+                return new BaseResponse<>(EMPTY_LOCATION_IDX);
             }
             if (patchUserLocationReq.getStatus() == null) {
                 return new BaseResponse<>(EMPTY_STATUS);

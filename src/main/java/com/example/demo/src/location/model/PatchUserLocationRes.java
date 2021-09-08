@@ -8,5 +8,5 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 public class PatchUserLocationRes {
-    private int userIdx;
+    private int locationIdx;
 }

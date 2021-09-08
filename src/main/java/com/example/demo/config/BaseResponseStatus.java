@@ -27,6 +27,7 @@ public enum BaseResponseStatus {
     EMPTY_LATITUDE(false, 2007, "위도를 입력해주세요"),
     EMPTY_LONGITUDE(false, 2008, "경도를 입력해주세요"),
 
+    EMPTY_LOCATION_IDX(false, 2011, "위치 인덱스를 입력해주세요"),
     EMPTY_STATUS(false, 2009, "상태값을 입력해주세요"),
     EMPTY_RADIUS(false, 2010, "반지름을 입력해주세요"),
     /**

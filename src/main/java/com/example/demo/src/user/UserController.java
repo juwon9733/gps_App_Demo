@@ -129,8 +129,8 @@ public class UserController {
      * @return
      */
     @ResponseBody
-    @PatchMapping("/status/{userIdx}")
-    public BaseResponse<PatchUserStatusRes> patchUserStatus(@PathVariable(required = false) Integer userIdx,
+    @PatchMapping("/status")
+    public BaseResponse<PatchUserStatusRes> patchUserStatus(@RequestParam(required = false) Integer userIdx,
                                                             @RequestBody PatchUserStatusReq patchUserStatusReq) {
         try {
             if (userIdx == null) {
