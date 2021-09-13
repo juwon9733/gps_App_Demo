@@ -11,5 +11,7 @@ public class User {
     private int userIdx;
     private String id;
     private String passwd;
+    private String restrictStatus;
     private String status;
+
 }

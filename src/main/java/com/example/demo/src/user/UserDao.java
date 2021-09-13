@@ -41,6 +41,7 @@ public class UserDao {
                         rs.getInt("Idx"),
                         rs.getString("id"),
                         rs.getString("passwd"),
+                        rs.getString("restrictStatus"),
                         rs.getString("status"))
                 , getUserByIdParams);
     }
@@ -61,6 +62,7 @@ public class UserDao {
                         rs.getInt("Idx"),
                         rs.getString("id"),
                         rs.getString("passwd"),
+                        rs.getString("restrictStatus"),
                         rs.getString("status")),
                 getUsersByUserIdxParams);
     }
@@ -85,6 +87,7 @@ public class UserDao {
                         rs.getInt("Idx"),
                         rs.getString("id"),
                         rs.getString("passwd"),
+                        rs.getString("restrictStatus"),
                         rs.getString("status"))
         );
     }

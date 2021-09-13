@@ -1,11 +1,6 @@
 package com.example.demo.src.restrict;
 
-import com.example.demo.src.location.model.GetLocationRes;
-import com.example.demo.src.location.model.PatchUserLocationReq;
-import com.example.demo.src.location.model.PostLocationReq;
-import com.example.demo.src.restrict.model.GetRestrictRes;
-import com.example.demo.src.restrict.model.PatchRestrictStatusReq;
-import com.example.demo.src.restrict.model.PostRestrictReq;
+import com.example.demo.src.restrict.model.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -60,6 +55,15 @@ public class RestrictDao {
         Object[] patchRestrictStatusParams = new Object[]{patchRestrictStatusReq.getStatus(),
                 patchRestrictStatusReq.getRestrictIdx()};
         this.jdbcTemplate.update(patchRestrictStatusQuery, patchRestrictStatusParams);
+        String lastInserIdxQuery = "select last_insert_id()";
+    }
+    public void patchRestrictInOut(PatchRestrictInOutReq patchRestrictInOutReq) {
+        String patchRestrictInOutQuery = "update User\n" +
+                "set restrictStatus = ?\n" +
+                "where Idx = ?";
+        Object[] patchRestrictInOutParams = new Object[]{patchRestrictInOutReq.getRestrictStatus(),
+                patchRestrictInOutReq.getUserIdx()};
+        this.jdbcTemplate.update(patchRestrictInOutQuery, patchRestrictInOutParams);
         String lastInserIdxQuery = "select last_insert_id()";
     }
 }

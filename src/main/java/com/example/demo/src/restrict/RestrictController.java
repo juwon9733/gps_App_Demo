@@ -71,6 +71,11 @@ public class RestrictController {
         }
     }
 
+    /**
+     * [11]. 특정 유저에 대한 제한 구역 활성화 및 비활성화
+     * @param patchRestrictStatusReq
+     * @return
+     */
     @ResponseBody
     @PatchMapping("/status")
     public BaseResponse<PatchRestrictStatusRes> patchRestrictStatus(
@@ -90,5 +95,46 @@ public class RestrictController {
             return new BaseResponse<>(exception.getStatus());
         }
     }
+    @ResponseBody
+    @PatchMapping("/in-out")
+    public BaseResponse<PatchRestrictInOutRes> patchRestrictInOut(
+            @RequestBody PatchRestrictInOutReq patchRestrictInOutReq) {
+        try {
+            if (patchRestrictInOutReq.getUserIdx() == null) {
+                return new BaseResponse<>(EMPTY_USER_IDX);
+            }
+            if (patchRestrictInOutReq.getRestrictStatus() == null) {
+                return new BaseResponse<>(EMPTY_STATUS);
+            }
+            restrictService.patchRestrictInOut(patchRestrictInOutReq);
+            PatchRestrictInOutRes patchRestrictInOutRes =
+                    new PatchRestrictInOutRes(patchRestrictInOutReq.getUserIdx());
+            return new BaseResponse<>(patchRestrictInOutRes);
+        } catch (BaseException exception) {
+            return new BaseResponse<>(exception.getStatus());
+        }
+    }
+
+    /*
+    @ResponseBody
+    @GetMapping("")
+    public BaseResponse<GetRestrictBoolRes> getRestrictBool(@RequestBody GetRestrictBoolReq getRestrictBoolReq) {
+        try {
+            if (getRestrictBoolReq.getUserIdx() == null) {
+                return new BaseResponse<>(EMPTY_USER_IDX);
+            }
+            if (getRestrictBoolReq.getNowLatitude() == null) {
+                return new BaseResponse<>(EMPTY_LATITUDE);
+            }
+            if (getRestrictBoolReq.getNowLongitude() == null) {
+                return new BaseResponse<>(EMPTY_LONGITUDE);
+            }
+            GetRestrictBoolRes getRestrictRes = restrictProvider.getRestrictBool(getRestrictBoolReq);
+            return new BaseResponse<>(getRestrictRes);
+        } catch (BaseException exception) {
+            return new BaseResponse<>((exception.getStatus()));
+        }
+    }
+     */
 
 }

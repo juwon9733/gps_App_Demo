@@ -1,21 +1,51 @@
 com/example/demo/config/Constant.java
  com.example.demo.config.Constant
-com/example/demo/src/location/LocationService.java
- com.example.demo.src.location.LocationService
-com/example/demo/src/location/model/PostLocationRes.java
- com.example.demo.src.location.model.PostLocationRes
 com/example/demo/src/location/model/PatchUserLocationAllReq.java
  com.example.demo.src.location.model.PatchUserLocationAllReq
 com/example/demo/src/user/model/PatchUserStatusRes.java
  com.example.demo.src.user.model.PatchUserStatusRes
+com/example/demo/src/restrict/model/GetRestrictBoolRes.java
+ com.example.demo.src.restrict.model.GetRestrictBoolRes
 com/example/demo/src/location/LocationController.java
  com.example.demo.src.location.LocationController
-com/example/demo/src/restrict/model/PatchRestrictStatusRes.java
- com.example.demo.src.restrict.model.PatchRestrictStatusRes
 com/example/demo/src/location/LocationProvider.java
  com.example.demo.src.location.LocationProvider
 com/example/demo/utils/ValidationRegex.java
  com.example.demo.utils.ValidationRegex
+com/example/demo/config/BaseResponseStatus.java
+ com.example.demo.config.BaseResponseStatus
+com/example/demo/src/restrict/model/PostRestrictRes.java
+ com.example.demo.src.restrict.model.PostRestrictRes
+com/example/demo/src/user/model/PostUserSignReq.java
+ com.example.demo.src.user.model.PostUserSignReq
+com/example/demo/src/location/model/PostLocationReq.java
+ com.example.demo.src.location.model.PostLocationReq
+com/example/demo/src/restrict/RestrictService.java
+ com.example.demo.src.restrict.RestrictService
+com/example/demo/src/restrict/RestrictDao.java
+ com.example.demo.src.restrict.RestrictDao
+com/example/demo/config/secret/Secret.java
+ com.example.demo.config.secret.Secret
+com/example/demo/config/BaseResponse.java
+ com.example.demo.config.BaseResponse
+com/example/demo/src/user/UserService.java
+ com.example.demo.src.user.UserService
+com/example/demo/utils/KakaoToken.java
+ com.example.demo.utils.KakaoToken
+com/example/demo/src/location/model/GetLocationRes.java
+ com.example.demo.src.location.model.GetLocationRes
+com/example/demo/config/BaseException.java
+ com.example.demo.config.BaseException
+com/example/demo/src/restrict/model/GetRestrictBoolReq.java
+ com.example.demo.src.restrict.model.GetRestrictBoolReq
+com/example/demo/src/user/model/PostUserSignRes.java
+ com.example.demo.src.user.model.PostUserSignRes
+com/example/demo/src/location/LocationService.java
+ com.example.demo.src.location.LocationService
+com/example/demo/src/location/model/PostLocationRes.java
+ com.example.demo.src.location.model.PostLocationRes
+com/example/demo/src/restrict/model/PatchRestrictStatusRes.java
+ com.example.demo.src.restrict.model.PatchRestrictStatusRes
 com/example/demo/src/user/model/PostLoginRes.java
  com.example.demo.src.user.model.PostLoginRes
 com/example/demo/src/user/model/PostLogoutRes.java
@@ -24,26 +54,16 @@ com/example/demo/src/user/UserDao.java
  com.example.demo.src.user.UserDao
 com/example/demo/utils/AES128.java
  com.example.demo.utils.AES128
-com/example/demo/config/BaseResponseStatus.java
- com.example.demo.config.BaseResponseStatus
 com/example/demo/src/user/model/GetUserIdxByJwtRes.java
  com.example.demo.src.user.model.GetUserIdxByJwtRes
 com/example/demo/src/restrict/model/GetRestrictRes.java
  com.example.demo.src.restrict.model.GetRestrictRes
-com/example/demo/src/restrict/model/PostRestrictRes.java
- com.example.demo.src.restrict.model.PostRestrictRes
-com/example/demo/src/user/model/PostUserSignReq.java
- com.example.demo.src.user.model.PostUserSignReq
+com/example/demo/src/restrict/model/PatchRestrictInOutRes.java
+ com.example.demo.src.restrict.model.PatchRestrictInOutRes
 com/example/demo/src/location/model/PatchUserLocationRes.java
  com.example.demo.src.location.model.PatchUserLocationRes
-com/example/demo/src/location/model/PostLocationReq.java
- com.example.demo.src.location.model.PostLocationReq
 com/example/demo/src/WebSecurityConfig.java
  com.example.demo.src.WebSecurityConfig
-com/example/demo/src/restrict/RestrictService.java
- com.example.demo.src.restrict.RestrictService
-com/example/demo/src/restrict/RestrictDao.java
- com.example.demo.src.restrict.RestrictDao
 com/example/demo/src/test/TestController.java
  com.example.demo.src.test.TestController
 com/example/demo/src/restrict/model/PatchRestrictStatusReq.java
@@ -56,35 +76,23 @@ com/example/demo/src/restrict/RestrictProvider.java
  com.example.demo.src.restrict.RestrictProvider
 com/example/demo/src/user/model/PostLogoutReq.java
  com.example.demo.src.user.model.PostLogoutReq
-com/example/demo/config/secret/Secret.java
- com.example.demo.config.secret.Secret
 com/example/demo/src/restrict/RestrictController.java
  com.example.demo.src.restrict.RestrictController
 com/example/demo/src/user/UserController.java
  com.example.demo.src.user.UserController
-com/example/demo/config/BaseResponse.java
- com.example.demo.config.BaseResponse
 com/example/demo/src/restrict/model/PostRestrictReq.java
  com.example.demo.src.restrict.model.PostRestrictReq
 com/example/demo/src/user/model/User.java
  com.example.demo.src.user.model.User
 com/example/demo/src/user/model/PatchUserStatusReq.java
  com.example.demo.src.user.model.PatchUserStatusReq
-com/example/demo/src/user/UserService.java
- com.example.demo.src.user.UserService
-com/example/demo/utils/KakaoToken.java
- com.example.demo.utils.KakaoToken
-com/example/demo/src/location/model/GetLocationRes.java
- com.example.demo.src.location.model.GetLocationRes
-com/example/demo/config/BaseException.java
- com.example.demo.config.BaseException
 com/example/demo/DemoApplication.java
  com.example.demo.DemoApplication
 com/example/demo/utils/JwtService.java
  com.example.demo.utils.JwtService
 com/example/demo/src/user/UserProvider.java
  com.example.demo.src.user.UserProvider
-com/example/demo/src/user/model/PostUserSignRes.java
- com.example.demo.src.user.model.PostUserSignRes
+com/example/demo/src/restrict/model/PatchRestrictInOutReq.java
+ com.example.demo.src.restrict.model.PatchRestrictInOutReq
 com/example/demo/src/location/model/PatchUserLocationReq.java
  com.example.demo.src.location.model.PatchUserLocationReq

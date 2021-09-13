@@ -39,4 +39,11 @@ public class RestrictService {
             throw new BaseException(DATABASE_ERROR);
         }
     }
+    public void patchRestrictInOut(PatchRestrictInOutReq patchRestrictInOutReq) throws BaseException {
+        try {
+            restrictDao.patchRestrictInOut(patchRestrictInOutReq);
+        } catch (Exception exception) {
+            throw new BaseException(DATABASE_ERROR);
+        }
+    }
 }
