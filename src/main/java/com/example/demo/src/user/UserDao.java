@@ -32,7 +32,7 @@ public class UserDao {
     }
 
     public User getUserById(String id) {
-        String getUserByIdQuery = "select Idx, id, passwd, status\n" +
+        String getUserByIdQuery = "select Idx, id, passwd, status, restrictStatus\n" +
                 "from User\n" +
                 "where id = ? and status = 'Y'";
         String getUserByIdParams = id;
