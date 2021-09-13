@@ -2,6 +2,7 @@ package com.example.demo.src.location;
 
 import com.example.demo.config.BaseException;
 import com.example.demo.config.secret.Secret;
+import com.example.demo.src.location.model.PatchUserLocationAllReq;
 import com.example.demo.src.location.model.PatchUserLocationReq;
 import com.example.demo.src.location.model.PostLocationReq;
 import com.example.demo.src.location.model.PostLocationRes;
@@ -42,6 +43,13 @@ public class LocationService {
     public void patchUserLocationStatus(PatchUserLocationReq patchUserLocationReq) throws BaseException {
         try {
             locationDao.patchUserLocationStatus(patchUserLocationReq);
+        } catch (Exception exception) {
+            throw new BaseException(DATABASE_ERROR);
+        }
+    }
+    public void patchUserLocationStatusAll(PatchUserLocationAllReq patchUserLocationAllReq) throws BaseException {
+        try {
+            locationDao.patchUserLocationStatusAll(patchUserLocationAllReq);
         } catch (Exception exception) {
             throw new BaseException(DATABASE_ERROR);
         }

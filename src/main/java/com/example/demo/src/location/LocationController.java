@@ -91,4 +91,28 @@ public class LocationController {
             return new BaseResponse<>(exception.getStatus());
         }
     }
+
+    /**
+     * [8_1]. 특정 유저의 전체 경로 삭제
+     * @param patchUserLocationAllReq
+     * @return
+     */
+    @ResponseBody
+    @PatchMapping("/status/all")
+    public BaseResponse<String> patchUserLocationStatusAll(
+            @RequestBody PatchUserLocationAllReq patchUserLocationAllReq) {
+        try {
+            if (patchUserLocationAllReq.getUserIdx() == null) {
+                return new BaseResponse<>(EMPTY_USER_IDX);
+            }
+            if (patchUserLocationAllReq.getStatus() == null) {
+                return new BaseResponse<>(EMPTY_STATUS);
+            }
+            locationService.patchUserLocationStatusAll(patchUserLocationAllReq);
+            String res = "user's all status patched";
+            return new BaseResponse<>(res);
+        } catch (BaseException exception) {
+            return new BaseResponse<>(exception.getStatus());
+        }
+    }
 }

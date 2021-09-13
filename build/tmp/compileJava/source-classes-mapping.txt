@@ -4,6 +4,8 @@ com/example/demo/src/location/LocationService.java
  com.example.demo.src.location.LocationService
 com/example/demo/src/location/model/PostLocationRes.java
  com.example.demo.src.location.model.PostLocationRes
+com/example/demo/src/location/model/PatchUserLocationAllReq.java
+ com.example.demo.src.location.model.PatchUserLocationAllReq
 com/example/demo/src/user/model/PatchUserStatusRes.java
  com.example.demo.src.user.model.PatchUserStatusRes
 com/example/demo/src/location/LocationController.java
