@@ -71,6 +71,14 @@ public class UserProvider {
             throw new BaseException(DATABASE_ERROR);
         }
     }
+    public List<GetUserAllLocation> getUserAllLocation() throws BaseException {
+        try {
+            List<GetUserAllLocation> getUserAllLocations = userDao.getUserAllLocation();
+            return getUserAllLocations;
+        } catch (Exception exception) {
+            throw new BaseException(DATABASE_ERROR);
+        }
+    }
 
     /**
      * check 관련 함수 모음

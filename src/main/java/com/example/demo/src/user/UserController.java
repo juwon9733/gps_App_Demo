@@ -175,6 +175,16 @@ public class UserController {
             return new BaseResponse<>(exception.getStatus());
         }
     }
+    @ResponseBody
+    @GetMapping("/all-location")
+    public BaseResponse<List<GetUserAllLocation>> getUserAllLocation() {
+        try {
+            List<GetUserAllLocation> getUserAllLocations = userProvider.getUserAllLocation();
+            return new BaseResponse<>(getUserAllLocations);
+        } catch (BaseException exception) {
+            return new BaseResponse<>(exception.getStatus());
+        }
+    }
 
 
 

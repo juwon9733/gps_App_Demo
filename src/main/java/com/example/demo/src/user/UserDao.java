@@ -1,5 +1,6 @@
 package com.example.demo.src.user;
 
+import com.example.demo.src.user.model.GetUserAllLocation;
 import com.example.demo.src.user.model.PatchUserStatusReq;
 import com.example.demo.src.user.model.PostUserSignReq;
 import com.example.demo.src.user.model.User;
@@ -89,6 +90,31 @@ public class UserDao {
                         rs.getString("passwd"),
                         rs.getString("restrictStatus"),
                         rs.getString("status"))
+        );
+    }
+    public List<GetUserAllLocation> getUserAllLocation() {
+        String getUserAllLocationQuery = "select Idx, id, passwd, restrictStatus, latitude, longitude, Temp2.createdAt, Temp2.updatedAt\n" +
+                "from User\n" +
+                "         inner join(select userIdx\n" +
+                "                    from Location\n" +
+                "                    where status = 'Y'\n" +
+                "                    group by userIdx) Temp1 on User.Idx = Temp1.userIdx\n" +
+                "         inner join(select userIdx as Loc_userIdx, latitude, longitude, createdat, updatedat\n" +
+                "                    from Location\n" +
+                "                    where status = 'Y') Temp2 on Temp2.Loc_userIdx = User.Idx\n" +
+                "where status = 'Y';";
+        int getUserAllLocationParams;
+        return this.jdbcTemplate.query(getUserAllLocationQuery,
+                (rs, rowNum) -> new GetUserAllLocation(
+                        rs.getInt("Idx"),
+                        rs.getString("id"),
+                        rs.getString("passwd"),
+                        rs.getString("restrictStatus"),
+                        rs.getString("latitude"),
+                        rs.getString("longitude"),
+                        rs.getString("Temp2.createdAt"),
+                        rs.getString("Temp2.updatedAt")
+                        )
         );
     }
 

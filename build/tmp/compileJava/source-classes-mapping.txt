@@ -24,6 +24,8 @@ com/example/demo/src/restrict/RestrictService.java
  com.example.demo.src.restrict.RestrictService
 com/example/demo/src/restrict/RestrictDao.java
  com.example.demo.src.restrict.RestrictDao
+com/example/demo/src/user/model/GetUserAllLocation.java
+ com.example.demo.src.user.model.GetUserAllLocation
 com/example/demo/config/secret/Secret.java
  com.example.demo.config.secret.Secret
 com/example/demo/config/BaseResponse.java
