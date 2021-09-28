@@ -30,10 +30,17 @@ public class LocationDao {
     }
 
     public List<GetLocationRes> getLocation(int userIdx) {
-        String getLocationQuery = "select Idx, userIdx, latitude, longitude," +
-                " createdAt, updatedAt, status\n" +
+        String getLocationQuery = "select Idx,\n" +
+                "       userIdx,\n" +
+                "       latitude,\n" +
+                "       longitude,\n" +
+                "       createdAt,\n" +
+                "       updatedAt,\n" +
+                "       status\n" +
                 "from Location\n" +
-                "where userIdx = ? and status = 'Y'";
+                "where userIdx = ?\n" +
+                "  and status = 'Y'\n" +
+                "order by createdAt desc;";
         int getLocationParams = userIdx;
         return this.jdbcTemplate.query(getLocationQuery,
                 (rs, rowNum) -> new GetLocationRes(

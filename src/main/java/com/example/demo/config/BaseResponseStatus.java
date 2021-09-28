@@ -32,6 +32,8 @@ public enum BaseResponseStatus {
     EMPTY_RADIUS(false, 2010, "반지름을 입력해주세요"),
 
     EMPTY_RESTRICT_IDX(false, 2011, "제한 구역 인덱스를 입력해주세요"),
+    EMPTY_POINT_X(false, 2012, "포인트 X를 입력해주세요"),
+    EMPTY_POINT_Y(false, 2013, "포인트 Y를 입력해주세요"),
     /**
      *3000 : Response 오류
      */

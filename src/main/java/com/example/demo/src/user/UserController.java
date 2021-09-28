@@ -175,6 +175,11 @@ public class UserController {
             return new BaseResponse<>(exception.getStatus());
         }
     }
+
+    /**
+     * [13]. 위치가 존재하는 유저의, 위치 정보와 유저 정보 조회
+     * @return
+     */
     @ResponseBody
     @GetMapping("/all-location")
     public BaseResponse<List<GetUserAllLocation>> getUserAllLocation() {
